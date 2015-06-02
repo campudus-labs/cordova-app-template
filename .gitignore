@@ -1,0 +1,12 @@
+.idea
+*.iml
+.DS_Store
+.sass-cache/
+*.log
+node_modules/
+tmp/
+
+# do not include platforms or plugins, do everything via hooks!
+platforms/
+plugins/
+www/
