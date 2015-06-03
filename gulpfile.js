@@ -43,7 +43,7 @@ function sassCompile() {
   return gulp.src('src/scss/style.scss')
     .pipe(plumber({
       errorHandler : function (error) {
-        console.log(error.message);
+        console.log('error!', error);
         this.emit('end');
       }
     }))
