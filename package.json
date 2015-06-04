@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git@github.com:campudus/cordova-app-template.git"
   },
-  "author": "",
+  "author": "Campudus GmbH",
   "license": "ISC",
   "browserify-shim": {},
   "cordovaPlugins": [
