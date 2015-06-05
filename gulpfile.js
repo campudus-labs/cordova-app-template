@@ -203,9 +203,8 @@ function liveReloadCordova(cb) {
     removeHeaders : ['cookie', 'cookie2']
   }).listen(settings.corsProxyPort, settings.corsProxyHost, function () {
     console.log('Running CORS Anywhere on ' + settings.corsProxyHost + ':' + settings.corsProxyPort);
+    cb();
   });
-
-  cb();
 }
 
 function cordovaPrepare() {
