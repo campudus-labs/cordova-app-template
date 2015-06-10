@@ -148,7 +148,7 @@ function browserifyScripts() {
 function assetCopy() {
   return gulp.src(['src/**', '!src/js/**', '!src/scss/**'])
     .pipe(through(function (file) {
-      var data, embeddedCordova;
+      var data;
       if (/\.html$/.test(file.path)) {
         data = file.contents.toString().replace(/<!-- EMBED_CSP_POLICY -->/, embedContentSecurityPolicyText());
         data = data.replace(/<!-- EMBED_CORDOVA -->/, embedCordovaScript());
@@ -171,7 +171,7 @@ function embedContentSecurityPolicyText() {
   if (cordovaMode) {
     return '<meta http-equiv="Content-Security-Policy" content="default-src \'self\' ' + process.env['SERVER_HOST'] +
       ':* ws://' + process.env['SERVER_HOST'] + ':' +
-      process.env['LIVERELOAD_PORT'] + '; style-src \'self\' \'unsafe-inline\'; media-src *">';
+      process.env['LIVERELOAD_PORT'] + ' *; style-src \'self\' \'unsafe-inline\'; media-src *">';
   } else {
     return '';
   }
