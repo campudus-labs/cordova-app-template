@@ -56,7 +56,9 @@ gulp.task('dev:web', ['setup-livereload:web'], setupWatcher(['reload:web']));
 
 gulp.task('dev', ['setup-livereload'], setupWatcher(['reload']));
 
-gulp.task('default', ['build']);
+gulp.task('default', function(cb) {
+  gulpSequence('build:cordova', 'build:web', cb);
+});
 
 function envSetupWeb(cb) {
   webMode = true;
