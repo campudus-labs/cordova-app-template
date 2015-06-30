@@ -56,6 +56,8 @@ gulp.task('dev:web', ['setup-livereload:web'], setupWatcher(['reload:web']));
 
 gulp.task('dev', ['setup-livereload'], setupWatcher(['reload']));
 
+gulp.task('setup:cordova', cordovaPlugins);
+
 gulp.task('default', function(cb) {
   gulpSequence('build:cordova', 'build:web', cb);
 });
@@ -207,6 +209,14 @@ function liveReloadCordova(cb) {
     console.log('Running CORS Anywhere on ' + settings.corsProxyHost + ':' + settings.corsProxyPort);
     cb();
   });
+}
+
+function cordovaPlugins() {
+  var plugins = require('./package.json').cordovaPlugins;
+
+  return gulp.src('')
+    .pipe(plumber())
+    .pipe(shell(['cordova plugin add ' + plugins.join(' ')]));
 }
 
 function cordovaPrepare() {
